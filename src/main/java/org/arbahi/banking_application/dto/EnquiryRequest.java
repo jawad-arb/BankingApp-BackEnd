@@ -6,13 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class EmailDetails {
-    private String recipient;
-    private String messageBody;
-    private String subject;
-    private String attachment;
-
+public class EnquiryRequest {
+    private String accountNumber;
 }
