@@ -4,4 +4,5 @@ import org.arbahi.banking_application.dto.EmailDetails;
 
 public interface EmailService {
     void sendEmailAlert(EmailDetails emailDetails);
+    void sendEmailAlertWithAttachment(EmailDetails emailDetails);
 }
