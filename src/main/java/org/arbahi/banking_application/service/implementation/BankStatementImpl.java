@@ -140,9 +140,7 @@ public class BankStatementImpl implements BankStatement {
                 .attachment(FILE)
                 .build();
         emailService.sendEmailAlertWithAttachment(emailDetails);
-
-
-
+        
         return transactionList;
     }
 

@@ -8,6 +8,7 @@ import org.arbahi.banking_application.service.EmailService;
 import org.arbahi.banking_application.service.TransactionService;
 import org.arbahi.banking_application.service.UserService;
 import org.arbahi.banking_application.utils.AccountUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -18,6 +19,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final EmailService emailService;
     private final TransactionService transactionService;
+    private final BCryptPasswordEncoder passwordEncoder;
     @Override
     public BankResponse createAccount(UserRequest userRequest) {
         if (userRepository.existsByEmail(userRequest.getEmail())){
@@ -36,6 +38,7 @@ public class UserServiceImpl implements UserService {
                 .accountNumber(AccountUtils.generateAccountNumber())
                 .accountBalance(BigDecimal.ZERO)
                 .email(userRequest.getEmail())
+                .password(passwordEncoder.encode(userRequest.getPassword()))
                 .phoneNumber(userRequest.getPhoneNumber())
                 .alternativePhoneNumber(userRequest.getAlternativePhoneNumber())
                 .status("ACTIVE")
